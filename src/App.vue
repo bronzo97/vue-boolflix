@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TheHeader></TheHeader>
-    <TheMain></TheMain>
+    <TheMain @printResults="printTheResults"></TheMain>
   </div>
 </template>
 
@@ -14,8 +14,20 @@ export default {
   components: {
     TheHeader,
     TheMain,
-  }
+  },
+  data() {
+    return {
+      moviesList: [],
+    }
+  },
+	methods: {
+		printTheResults() {
+      moviesList.push(this.moviesList);
+		}
+	},
+
 }
+
 </script>
 
 <style lang="scss">
