@@ -3,7 +3,7 @@
         <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" @click="$emit('printResults', this.moviesList)">Button</button>
+            <button class="btn btn-outline-secondary" type="button" @click="$emit('printResults', fetchMoviesList())">Button</button>
         </div>
         </div>
     </div>
@@ -32,11 +32,14 @@ export default {
             },
         })
         .then((resp) => {
-            this.moviesList = resp.data.results;
-        });
-    console.log(this.moviesList);
 
-    }
+            this.moviesList = resp.data.results;
+            // this.$emit('printResults', this.moviesList);
+            
+        });
+    // console.log(this.moviesList);
+    },
+
     },
     mounted() {
         this.fetchMoviesList();

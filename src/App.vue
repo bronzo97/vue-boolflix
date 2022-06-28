@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <TheHeader></TheHeader>
-    <TheMain @printResults="printTheResults"></TheMain>
+    <TheHeader @printResults="printTheResults"></TheHeader>
+    <TheMain ></TheMain>
   </div>
 </template>
 
@@ -17,13 +17,14 @@ export default {
   },
   data() {
     return {
-      moviesList: [],
+      moviesListFather: [],
     }
   },
 	methods: {
-		printTheResults() {
-      moviesList.push(this.moviesList);
-		}
+		printTheResults(resp) {
+      console.log(this.moviesList);
+
+		},
 	},
 
 }
