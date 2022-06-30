@@ -11,12 +11,13 @@
                 <div>Vote: {{movie.vote_average}}</div>
             </li>
         </ul>
+        <h1>Tv Shows:</h1>
         <ul>
             <li v-for="serie in seriesList" :key="serie.id">
-                <div>Title: {{serie.title}}
+                <div>Title: {{serie.name}}
                     <span><lang-flag :iso="serie.original_language" :squared="false"/></span>
                 </div>
-                <div>Original title: {{serie.original_title}}</div>
+                <div>Original title: {{serie.original_name}}</div>
                 <div>Original language: {{serie.original_language}}</div>
                 <div>Vote: {{serie.vote_average}}</div>
             </li>

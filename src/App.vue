@@ -27,8 +27,47 @@ export default {
 	methods: {
     onSearchTextChanged(userInput) {
       this.searchText = userInput;
+      this.fetchData('movie');
+      this.fetchData('tv');
+    },
+    fetchData(type) {
+      axios.get("https://api.themoviedb.org/3/search/" + type, {
+          params: {
+              api_key: "085e3509ebd86b152aa226428d23cddb",
+              query: this.searchText,
+              language: 'it-IT',
+          },
+      })
+      .then((resp) => {
+        if (type === 'movie') {
+          this.moviesList = resp.data.results; 
+        } else {
+          this.seriesList = resp.data.results;
+        }
+      })
+    }, 
 
-        axios.get("https://api.themoviedb.org/3/search/movie", {
+  },
+
+}
+
+</script>
+
+<style lang="scss">
+
+</style>
+
+
+
+
+    onSearchTextChanged(userInput) {
+      this.searchText = userInput;
+      nuovaFunzione(movie);
+      nuovaFunzione(tv);
+      }
+
+      nuovaFunzione(type) {
+        axios.get("https://api.themoviedb.org/3/search/" + type, {
             params: {
                 api_key: "085e3509ebd86b152aa226428d23cddb",
                 query: userInput,
@@ -42,15 +81,3 @@ export default {
           this.seriesList = resp.data.results
         }
         })
-  },
-
-  },
-}
-
-</script>
-
-<style lang="scss">
-
-</style>
-
-
