@@ -28,9 +28,7 @@ export default {
 
     },
     computed: {
-        countryFlag() {
-            return this.movie;
-        }
+
     }
     }
 
