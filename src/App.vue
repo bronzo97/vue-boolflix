@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TheHeader @searchTextChanged="onSearchTextChanged"></TheHeader>
-    <TheMain :moviesList="moviesList"></TheMain>
+    <TheMain :moviesList="moviesList" :seriesList="seriesList"></TheMain>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       moviesList: [],
+      seriesList: [],
       searchText: '',
     }
   },
@@ -35,7 +36,11 @@ export default {
             },
         })
         .then((resp) => {
+          if (type === 'movie') {
         this.moviesList = resp.data.results; 
+        } else {
+          this.seriesList = resp.data.results
+        }
         })
   },
 
