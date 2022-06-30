@@ -3,6 +3,7 @@
         <h1>Movies:</h1>
         <ul>
             <li v-for="movie in moviesList" :key="movie.id">
+                <img :src="posterImg" alt="">
                 <div>Title: {{movie.title}}
                     <span><lang-flag :iso="movie.original_language" :squared="false"/></span>
                 </div>
@@ -14,6 +15,7 @@
         <h1>Tv Shows:</h1>
         <ul>
             <li v-for="serie in seriesList" :key="serie.id">
+                <img :src='"https://image.tmdb.org/t/p/w200" + serie.poster_path ' alt="">
                 <div>Title: {{serie.name}}
                     <span><lang-flag :iso="serie.original_language" :squared="false"/></span>
                 </div>
@@ -32,12 +34,20 @@ export default {
         seriesList: Array
     },
     data() {
-        return{
+        return {
 
         }
     },
     methods: {
+        posterImg() {
+            const baseUrl = "https://image.tmdb.org/t/p/";
+            const imgSize = "w200";
 
+            if (this.movie.poster_path) {
+            return baseUrl + imgSize + this.movie.poster_path;
+            }
+            return './imgError.png';
+        }
     },
     computed: {
 
