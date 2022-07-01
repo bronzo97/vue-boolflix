@@ -5,7 +5,9 @@ import App from './App.vue'
 import "bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import "./assets/scss/main.scss"
+import "./assets/scss/main.scss";
+
+
 
 // Import Flags
 import LangFlag from 'vue-lang-code-flags';

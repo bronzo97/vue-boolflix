@@ -10,6 +10,16 @@
                 <div>Original title: {{movie.original_title}}</div>
                 <div>Original language: {{movie.original_language}}</div>
                 <div>Vote: {{movie.vote_average}}</div>
+                <div class="stars d-flex">
+                    <div v-for="i in 5" :key="i">
+                        <span v-if="i <= starsCalculator(movie)">
+                            <i class="fa-solid fa-star text-warning"></i>
+                        </span>
+                        <span v-else>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                </div>
             </li>
         </ul>
         <h1>Tv Shows:</h1>
@@ -22,12 +32,15 @@
                 <div>Original title: {{serie.original_name}}</div>
                 <div>Original language: {{serie.original_language}}</div>
                 <div>Vote: {{serie.vote_average}}</div>
+
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+
+
 export default {
     props: {
         moviesList: Array, 
@@ -56,8 +69,12 @@ export default {
             return baseUrl + imgSize + serie.poster_path;
             }
             return './imgError.png';
+        },
+        starsCalculator(movie) {
+            return Math.ceil(movie.vote_average / 2);
         }
     },
+
     computed: {
 
     }
